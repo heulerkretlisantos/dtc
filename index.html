@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Intermediary Page...</title>
+    <title>Intermediary Page</title>
     <script type="text/javascript" defer="" src="track"></script>
     <script async="" src="js/gtm.js"></script>
     <script type="text/javascript" src="js/10007727-10007041.js"></script>
@@ -530,14 +530,19 @@
 
     <script>
     // Configuração de Links e Variáveis
+    // Links para diferentes pacotes de produtos
     window.oneBottleLink = "https://nitworld.mycartpanda.com/ckt/GprJpA";
     window.threeBottleLink = "https://nitworld.mycartpanda.com/ckt/WjQY5o";
     window.sixBottleLink = "https://nitworld.mycartpanda.com/ckt/wOJ6em";
     window.oneBottleLinkMobile = "https://nitworld.mycartpanda.com/ckt/GprJpA";
     window.threeBottleLinkMobile = "https://nitworld.mycartpanda.com/ckt/WjQY5o";
     window.sixBottleLinkMobile = "https://nitworld.mycartpanda.com/ckt/wOJ6em";
+
+    // Flags de redirecionamento
     window.redirectM = 1;
     window.redirectD = 1;
+
+    // Informações do produto
     window.productCodename = "";
     window.accountId = "5601";
     window.oneBottlePrice = "69";
@@ -548,7 +553,13 @@
     window.leadID = "";
     window.processor = "buygoods";
     window.tm = window.tm || {};
-  
+
+    // Função para Obter Parâmetros da URL
+    window.getUrlParam = function (e) {
+        var t = new RegExp("[?&]" + e + "=([^&#]*)").exec(window.location.href);
+        return null === t ? null : t[1] || 0;
+    };
+
     // Configuração de Produtos
     window.tm.products = [
         { item_id: "1-SB7-294", price: "294.00", quantity: "1" },
@@ -559,7 +570,36 @@
     window.tm.threeBottle = [{ item_id: "1-SB3-177", price: "177.00", quantity: "3" }];
     window.tm.sixBottle = [{ item_id: "1-SB7-294", price: "294.00", quantity: "7" }];
 
-    // Detecção de Dispositivos Móveis
+    // Função para Gerar IDs de Eventos
+    window.tm.generate_event_id = function () {
+        var o = (new Date).getTime();
+        return "undefined" != typeof performance && "function" == typeof performance.now && (o += performance.now()), "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (e) {
+            var t = (o + 16 * Math.random()) % 16 | 0;
+            return o = Math.floor(o / 16), ("x" === e ? t : 3 & t | 8).toString(16);
+        });
+    };
+
+    // Configuração do Data Layer do Google Tag Manager
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(
+        { ecommerce: null },
+        {
+            event: "dl_view_promotion",
+            event_id: window.tm.generate_event_id(),
+            funnel: window.productName,
+            processor: window.processor,
+            affiliate: getUrlParam("aff_id") || getUrlParam("affiliate") || getUrlParam("shield") || getUrlParam("affiliate") || getUrlParam("aff") || "",
+            subid: getUrlParam("subid") || getUrlParam("subid2") || getUrlParam("tid") || getUrlParam("cid") || "",
+            ecommerce: {
+                currency: "USD",
+                items: window.tm.products
+            }
+        }
+    );
+</script>
+
+<script type="text/javascript">
+    // Expressões regulares para identificar dispositivos móveis
     var apple_phone = /iPhone/i,
         apple_ipod = /iPod/i,
         android_phone = /\bAndroid(?:.+)Mobile\b/i,
@@ -571,7 +611,10 @@
         other_chrome = /\b(CriOS|Chrome)(?:.+)Mobile/i,
         other_firefox = /Mobile(?:.+)Firefox\b/i;
 
+    // Função auxiliar para combinar padrões
     function match(o, e) { return o.test(e) }
+
+    // Função para detectar se o dispositivo é móvel
     function isMobile(o) {
         var e = o || ("undefined" != typeof navigator ? navigator.userAgent : ""),
             i = e.split("[FBAN");
@@ -586,18 +629,82 @@
         return n.phone = n.apple.phone || n.android.phone || n.windows.phone || n.amazon.phone, n;
     }
 
-    // Rolagem Suave de Âncoras
+    // Função para identificar parâmetros que não são UTM
+    function paramIsNotUtm(o) { return "utm_" !== o.slice(0, 4) }
+
+    // Função para obter o valor de um cookie
+    function getCookieValue(o) {
+        var e = document.cookie.match("(^|[^;]+)\\s*" + o + "\\s*=\\s*([^;]+)");
+        return e ? e.pop() : "";
+    }
+
+    // Função para adicionar links de pedidos
+    function addOrderLinks() {
+        if (window.variables = "", history && history.replaceState && location.search) {
+            var o = location.search.slice(1).split("&"),
+                e = o.filter(paramIsNotUtm);
+            if (e.length <= o.length) {
+                var i = e.length ? "" + e.join("&") : "";
+                window.variables = i + location.hash;
+            }
+        }
+        var n;
+        // Atualização dos links de pedidos baseados na flag 'noredirect'
+        null !== wsFlags.noredirect && (window.sixBottleLinkMobile = window.mwdomain + window.mwid + "/" + wsFlags.noredirect + "/" + window.mw6 + "/?", window.sixBottleLink = window.mwdomain + window.mwid + "/" + wsFlags.noredirect + "/" + window.mw6 + "/?", window.threeBottleLinkMobile = window.mwdomain + window.mwid + "/" + wsFlags.noredirect + "/" + window.mw3 + "/?", window.threeBottleLink = window.mwdomain + window.mwid + "/" + wsFlags.noredirect + "/" + window.mw3 + "/?", window.oneBottleLinkMobile = window.mwdomain + window.mwid + "/" + wsFlags.noredirect + "/" + window.mw1 + "/?", window.oneBottleLink = window.mwdomain + window.mwid + "/" + wsFlags.noredirect + "/" + window.mw1 + "/?");
+        
+        // Configuração dos eventos de clique para os links de pedidos
+        var t = document.querySelectorAll(".order-link-6-bottle");
+        for (n = 0; n < t.length; n++) console.log(t.length), t[n].onclick = function () {
+            var o;
+            console.log("clicked6"), o = isMobile().phone ? window.sixBottleLinkMobile : window.sixBottleLink,
+            window.dataLayer = window.dataLayer || [], window.dataLayer.push({ ecommerce: null }, { event: "dl_add_to_cart", event_id: window.tm.generate_event_id(), funnel: window.productName, processor: window.processor, ecommerce: { currency: "USD", value: window.sixBottlePrice, items: window.tm.sixBottle } }),
+            window.redirectM || window.redirectD ? window.location = o + "&redirect=" + btoa("https://" + window.location.hostname + "/options-bg/1/6/") + "&" + window.variables + "&sessid2=" + getCookieValue("sessid2") : window.location = o + "&" + window.variables;
+        };
+
+        var r = document.querySelectorAll(".order-link-3-bottle");
+        for (n = 0; n < r.length; n++) r[n].onclick = function () {
+            var o;
+            o = isMobile().phone ? window.threeBottleLinkMobile : window.threeBottleLink,
+            window.dataLayer = window.dataLayer || [], window.dataLayer.push({ ecommerce: null }, { event: "dl_add_to_cart", event_id: window.tm.generate_event_id(), funnel: window.productName, processor: window.processor, ecommerce: { currency: "USD", value: window.threeBottlePrice, items: window.tm.threeBottle } }),
+            console.log("clicked3"), window.redirectM || window.redirectD ? window.location = o + "&redirect=" + btoa("https://" + window.location.hostname + "/options-bg/1/3/") + "&" + window.variables + "&sessid2=" + getCookieValue("sessid2") : window.location = o + "&" + window.variables;
+        };
+
+        var d = document.querySelectorAll(".order-link-1-bottle");
+        for (n = 0; n < d.length; n++) d[n].onclick = function () {
+            var o;
+            console.log("clicked1"), o = isMobile().phone ? window.oneBottleLinkMobile : window.oneBottleLink,
+            window.dataLayer = window.dataLayer || [], window.dataLayer.push({ ecommerce: null }, { event: "dl_add_to_cart", event_id: window.tm.generate_event_id(), funnel: window.productName, processor: window.processor, ecommerce: { currency: "USD", value: window.oneBottlePrice, items: window.tm.oneBottle } }),
+            window.redirectM || window.redirectD ? window.location = o + "&redirect=" + btoa("https://" + window.location.hostname + "/options-bg/1/1/") + "&" + window.variables + "&sessid2=" + getCookieValue("sessid2") : window.location = o + "&" + window.variables;
+        };
+    }
+
+    // Função para Smooth Scrolling em links âncoras
     function anchorLinkSmoothScrolling() {
         document.querySelectorAll('a[href^="#"]').forEach(function (o) {
             o.addEventListener("click", function (o) {
-                o.preventDefault(),
-                document.querySelector(this.getAttribute("href")).scrollIntoView({ behavior: "smooth" });
+                o.preventDefault(), document.querySelector(this.getAttribute("href")).scrollIntoView({ behavior: "smooth" });
             });
         });
     }
-    anchorLinkSmoothScrolling();
 
+    // Flags de configuração
+    window.wsFlags = { showFda: "1" === urlParam("fda"), noredirect: urlParam("aid") };
+
+    // Exibe o logotipo da FDA se a flag estiver ativa
+    wsFlags.showFda && (document.querySelector(".fda-logo").classList.add("show"), document.querySelector(".grid").classList.add("fda"));
+
+    // Chama funções para adicionar links de pedidos e smooth scrolling
+    trackingCode(), addOrderLinks(), anchorLinkSmoothScrolling();
 </script>
+
+<script type="text/javascript">
+    // Criação de um iframe para rastreamento de conversões após 1 segundo
+    setTimeout(function () {
+        var e = document.createElement("iframe");
+        e.async = !0, e.style = "display:none", e.setAttribute("src", "https://buygoods.com/affiliates/go/conversion/iframe/bg?a=5601&t=&s=" + ReadCookie("sessid2")), document.body.appendChild(e);
+    }, 1000);
+</script>
+
 
 </body>
 

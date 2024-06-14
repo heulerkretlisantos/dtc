@@ -565,47 +565,7 @@
 
     <!-- UTMs -->
 
-    <script>
-addEventListener("load", function () {
-    e = window.top.location.href
-    url = new URL(e);
-    
-  let campaignName = url.searchParams.get("utm_campaign")
-  let adsetName = url.searchParams.get("utm_term")
-  let adName = url.searchParams.get("utm_content")
-  var links = document.querySelectorAll('a');
-  var original = "";
-  var sck = "";
-  var novoLink = ""
-  var arrURL = [];
-  var rastreio = `${campaignName}_${adsetName}_${adName}`
-
-  if (campaignName){
-
-    for( var i = 0; i < links.length; i++){
-      
-      let original = links[i].getAttribute("href");
-      let sck = "sck=" + rastreio;
-      let arrURL = original.split('?');
-      let novoLink
-     
-      if(arrURL.length == 1){
-        novoLink = original + "?" + sck;
-      }
-      else {
-        novoLink = arrURL[0] + "?" + sck + "&" + arrURL[1];
-      }
-     
-      links[i].setAttribute("href", novoLink)
-    }
-  }
-  
-  const dateComponent = document.getElementById('date-actual')
-  const getDate = new Date();
-  dateComponent.innerHTML = getDate.toLocaleString('pt-BR').split(',')[0]
-  
-})
-</script>
+   <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" async defer></script>
 
     
 </body>

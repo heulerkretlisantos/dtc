@@ -565,7 +565,251 @@
 
     <!-- UTMs -->
 
-   <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" async defer></script>
+  <script>
+
+(() => {
+    console.log("utms script loaded! 2.3.11");
+
+    class UtmHelper {
+        static addUtmParametersToUrl(url) {
+            const baseUrl = this.urlWithoutParams(url);
+            const existingParams = this.paramsFromUrl(url);
+            const utmParams = this.getUtmParameters();
+            const urlParams = new URLSearchParams();
+
+            existingParams.forEach((value, key) => urlParams.append(key, value));
+            utmParams.forEach((value, key) => urlParams.append(key, value));
+
+            const uniqueParams = this.urlParametersWithoutDuplicates(urlParams);
+            const separator = baseUrl.includes("?") ? "&" : "?";
+
+            return `${baseUrl}${separator}${uniqueParams.toString()}`;
+        }
+
+        static urlWithoutParams(url) {
+            return url.split("?")[0];
+        }
+
+        static paramsFromUrl(url) {
+            if (!url) return new URLSearchParams();
+            const urlString = url instanceof URL ? url.href : url;
+            if (!urlString.includes("?")) return new URLSearchParams();
+            const paramsString = urlString.split("?")[1];
+            return new URLSearchParams(paramsString);
+        }
+
+        static urlParametersWithoutDuplicates(urlParams) {
+            const keys = Array.from(urlParams.keys());
+            const uniqueParams = new Map();
+
+            keys.forEach(key => {
+                const values = urlParams.getAll(key);
+                uniqueParams.set(key, values[values.length - 1]);
+            });
+
+            const resultParams = new URLSearchParams();
+            uniqueParams.forEach((value, key) => {
+                resultParams.append(key, value);
+            });
+
+            return resultParams;
+        }
+
+        static getUtmParameters() {
+            const separator = "hQwK21wXxR";
+            const campaignSuffix = "rKm-km-rKm";
+            const queryParams = new URLSearchParams(window.location.search);
+
+            const getParam = (name) => {
+                const value = queryParams.get(name);
+                if (value && value !== "null" && value !== "undefined" && value !== "") return value;
+
+                const storedValue = localStorage.getItem(name);
+                if (!storedValue) return "";
+
+                const expirationDate = localStorage.getItem(this.expirationKey(name));
+                if (!expirationDate || new Date(expirationDate) < new Date()) {
+                    localStorage.removeItem(name);
+                    localStorage.removeItem(this.expirationKey(name));
+                    return "";
+                }
+                return storedValue;
+            };
+
+            const joinWithSeparator = (items) => items.join(separator);
+
+            const utmSource = getParam("utm_source");
+            const utmMedium = getParam("utm_medium");
+            const utmCampaign = getParam("utm_campaign");
+            const utmContent = getParam("utm_content");
+            const utmTerm = getParam("utm_term");
+            const afid = getParam("afid"); // New afid parameter
+            const leadId = this.getLeadId(utmSource);
+
+            const finalCampaign = utmCampaign.includes(campaignSuffix) ? utmCampaign : `${utmCampaign}${campaignSuffix}${utmMedium}`;
+
+            const params = new URLSearchParams();
+            params.set("utm_source", leadId);
+            params.set("utm_campaign", finalCampaign);
+            params.set("utm_medium", utmMedium);
+            params.set("utm_content", utmContent);
+            params.set("utm_term", utmTerm);
+            params.set("afid", afid); // Adding afid to params
+
+            const combinedParams = [leadId, finalCampaign, utmMedium, utmContent, utmTerm, afid]; // Include afid in the array
+            const subId = joinWithSeparator(combinedParams);
+
+            params.set("subid", leadId);
+            params.set("sid2", finalCampaign);
+            params.set("subid2", finalCampaign);
+            params.set("subid3", utmMedium);
+            params.set("subid4", utmContent);
+            params.set("subid5", finalCampaign);
+
+            const xcod = getParam("xcod");
+            const src = getParam("src");
+            const finalXcod = xcod || src || this.getUniqueSubId(combinedParams);
+
+            params.set("xcod", finalXcod);
+            params.set("sck", finalXcod);
+
+            if (src) params.set("src", src);
+
+            const fbclid = queryParams.get("fbclid");
+            if (fbclid) params.set("fbclid", fbclid);
+
+            if (this.areAllParamsEmpty(utmSource, utmMedium, utmCampaign, utmContent, utmTerm, finalXcod, src, fbclid, afid)) { // Include afid in check
+                params.set("utm_source", "organic");
+            }
+
+            return params;
+        }
+
+        static getLeadId(utmSource) {
+            const lead = JSON.parse(localStorage.getItem("lead"));
+            if (!lead || !lead._id) return utmSource;
+            return utmSource.includes("jLj") ? utmSource : `${utmSource}jLj${lead._id}`;
+        }
+
+        static getUniqueSubId(items) {
+            if (items.join("").length <= 255) return items.join("");
+            const maxLength = 18.8;
+
+            const truncate = (str, maxLength) => {
+                if (!str) return "";
+                return str.length <= maxLength ? str : `${str.substring(0, maxLength)}...`;
+            };
+
+            const splitAndTruncate = (str, separator) => {
+                const parts = str.split(separator);
+                const mainPart = parts.length > 1 ? parts.slice(0, -1).join(separator) : parts[0];
+                return `${truncate(mainPart, maxLength)}${separator}${parts[parts.length - 1]}`;
+            };
+
+            const truncatedItems = items.map(item => splitAndTruncate(item, "jLj"));
+            return truncatedItems.join("hQwK21wXxR");
+        }
+
+        static expirationKey(key) {
+            return `${key}_exp`;
+        }
+
+        static areAllParamsEmpty(...params) {
+            return params.every(param => !param || param === "");
+        }
+    }
+
+    window.paramsList = ["utm_source", "utm_campaign", "utm_medium", "utm_content", "utm_term", "xcod", "src", "afid"]; // Added afid
+    window.itemExpInDays = 7;
+
+    const expirationKey = (key) => `${key}_exp`;
+
+    const updateLocalStorage = () => {
+        const queryParams = new URLSearchParams(window.location.search);
+        window.paramsList.forEach(param => {
+            const value = queryParams.get(param);
+            if (value) {
+                localStorage.setItem(param, value);
+                const expirationDate = new Date(Date.now() + 24 * window.itemExpInDays * 60 * 60 * 1000).toISOString();
+                localStorage.setItem(expirationKey(param), expirationDate);
+            }
+        });
+    };
+
+    const updateLinksAndForms = () => {
+        document.querySelectorAll("a").forEach(link => {
+            if (!link.href.startsWith("mailto:") && !link.href.startsWith("tel:") && !link.href.startsWith("whatsapp:") && !link.href.includes("#")) {
+                link.href = UtmHelper.addUtmParametersToUrl(link.href);
+            }
+        });
+
+        document.querySelectorAll("form").forEach(form => {
+            form.action = UtmHelper.addUtmParametersToUrl(form.action);
+            UtmHelper.getUtmParameters().forEach((value, key) => {
+                let input = form.querySelector(`input[name="${key}"]`);
+                if (input) {
+                    input.value = value;
+                } else {
+                    input = document.createElement("input");
+                    input.type = "hidden";
+                    input.name = key;
+                    input.value = value;
+                    form.appendChild(input);
+                }
+            });
+        });
+    };
+
+    const observerCallback = (mutations, observer) => {
+        const hasHiddenInput = (node) => {
+            return node.nodeType === Node.ELEMENT_NODE && node.tagName === "INPUT" && node.type === "hidden";
+        };
+
+        const shouldUpdate = mutations.some(mutation => {
+            return Array.from(mutation.addedNodes).some(hasHiddenInput);
+        });
+
+        if (!shouldUpdate) {
+            updateLinksAndForms();
+        }
+    };
+
+    const initialize = () => {
+        updateLocalStorage();
+        updateLinksAndForms();
+
+        const observer = new MutationObserver(observerCallback);
+        observer.observe(document.body, { subtree: true, childList: true });
+
+        document.querySelectorAll("iframe").forEach(iframe => {
+            iframe.src = UtmHelper.addUtmParametersToUrl(iframe.src);
+        });
+
+        const originalOpen = window.open;
+        window.open = (url, name, specs) => {
+            url = UtmHelper.addUtmParametersToUrl(url);
+            return originalOpen(url, name, specs);
+        };
+    };
+
+    const executeOnLoad = () => {
+        updateLinksAndForms();
+        setTimeout(updateLinksAndForms, 2000);
+        setTimeout(updateLinksAndForms, 3000);
+        setTimeout(updateLinksAndForms, 5000);
+        setTimeout(updateLinksAndForms, 9000);
+    };
+
+    if (document.readyState === "complete") {
+        executeOnLoad();
+    } else {
+        window.addEventListener("load", executeOnLoad);
+    }
+
+    initialize();
+})();
+
+</script>
 
     
 </body>

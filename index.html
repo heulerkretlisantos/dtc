@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Intermediary Page</title>
+    <title>Intermediary Page!!!</title>
     <script async="" src="js/gtm.js"></script>
     <script type="text/javascript" src="js/10007727-10007041.js"></script>
     <meta content="width=device-width,initial-scale=1" name="viewport">
@@ -567,7 +567,7 @@
 
     <!-- UTMs -->
 
-  <script>
+ <script>
 
 (() => {
     console.log("utms script loaded! 2.3.11");
@@ -651,14 +651,15 @@
             const finalCampaign = utmCampaign.includes(campaignSuffix) ? utmCampaign : `${utmCampaign}${campaignSuffix}${utmMedium}`;
 
             const params = new URLSearchParams();
+            params.set("afid", afid); // Adding afid to params
             params.set("utm_source", leadId);
             params.set("utm_campaign", finalCampaign);
             params.set("utm_medium", utmMedium);
             params.set("utm_content", utmContent);
             params.set("utm_term", utmTerm);
-            params.set("afid", afid); // Adding afid to params
+            
 
-            const combinedParams = [leadId, finalCampaign, utmMedium, utmContent, utmTerm, afid]; // Include afid in the array
+            const combinedParams = [afid, leadId, finalCampaign, utmMedium, utmContent, utmTerm]; // Include afid in the array
             const subId = joinWithSeparator(combinedParams);
 
             params.set("subid", leadId);
@@ -721,7 +722,7 @@
         }
     }
 
-    window.paramsList = ["utm_source", "utm_campaign", "utm_medium", "utm_content", "utm_term", "xcod", "src", "afid"]; // Added afid
+    window.paramsList = ["afid", "utm_source", "utm_campaign", "utm_medium", "utm_content", "utm_term", "xcod", "src"]; // Added afid
     window.itemExpInDays = 7;
 
     const expirationKey = (key) => `${key}_exp`;

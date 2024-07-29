@@ -41,66 +41,8 @@
         }, {})),
       }
     </script>
-  
-        <script defer="" async="">
-          (function(script) {
-            script.src = "//" + location.hostname
-              + "/api/visits?page_id=25&page_version=&request_id=AC462E16%3A32D6_C0A85015%3A01BB_66A406BF_118CC5%3A21F26D"
-              + "&querystring=" + encodeURIComponent(window.location.search.substr(1))
-              + "&fbclid=" + encodeURIComponent(__app.query.fbclid || "")
-              + "&fbp=" + encodeURIComponent(__app.cookies._fbp || "")
-              + "&fbc=" + encodeURIComponent(__app.cookies._fbc || "")
-              + "&referrer=" + encodeURIComponent(document.referrer);
-            document.head.appendChild(script);
-          })(document.createElement("script"));
-        </script>
-      
-        <script>
-          function recordEmailConversion(email) {
-            return new Promise(function(resolve, reject) {
+        
 
-              const url = "//"
-                + location.hostname
-                + "/api/conversions/email-collected"
-                + location.search
-
-              const xhr = new XMLHttpRequest
-
-              xhr.onreadystatechange = function() {
-
-                if (xhr.readyState !== XMLHttpRequest.DONE) {
-                  return
-                }
-
-                if (Math.floor(xhr.status / 100) !== 2) {
-                  return reject(xhr.responseText || "Network Error")
-                }
-
-                try {
-                  var response = JSON.parse(xhr.responseText)
-                }
-                catch (error) {
-                  return reject("Failed parsing server response: " + error.toString())
-                }
-
-                resolve(response)
-              }
-
-              xhr.onerror = reject
-
-              xhr.open("POST", url)
-              xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
-
-              xhr.send(JSON.stringify({
-                email,
-                page_id: 25,
-                page_version: "" || undefined,
-                referrer: document.referrer,
-                request_id: "AC462E16:32D6_C0A85015:01BB_66A406BF_118CC5:21F26D" || undefined,
-              }))
-            })
-          }
-        </script>
       </head>
 <body>
 
@@ -287,7 +229,7 @@
             </a>
 
             <!-- mobile 3 bottles -->
-            <a href="https://buygoods.com/secure/checkout.html?account_id=9236&amp;product_codename=alp3DTC&amp;redirect=aHR0cHM6Ly9nZXRhbHBoYWJpdGVzLmNvbS91cHNlbGwtZHRj&amp;vid1=dtc" id="w-node-9311e3656658-ace7ac45" class="productcard promo white order-link-3-bottle main-fnl">
+            <a href="https://nutrausa.mycartpanda.com/ckt/j8qr6q" id="w-node-9311e3656658-ace7ac45" class="productcard promo white order-link-3-bottle main-fnl">
               <div class="inwrapper mobile-position">
                 <div class="cards-image-mask promoimage">
                   <div class="product-text mobile dark last">3 BOTTLES</div>
@@ -315,7 +257,7 @@
             </a>
 
             <!-- mobile 3 bottles RFNV -->
-            <a href="https://buygoods.com/secure/checkout.html?account_id=9236&amp;product_codename=alp3DTC&amp;redirect=aHR0cHM6Ly9nZXRhbHBoYWJpdGVzLmNvbS91cHNlbGwtdHNsMi1lcw==&amp;vid1=dtc" id="w-node-9311e3656658-ace7ac45" class="productcard promo white order-link-3-bottle rfnv-fnl">
+            <a href="https://nutrausa.mycartpanda.com/ckt/j8qr6q" id="w-node-9311e3656658-ace7ac45" class="productcard promo white order-link-3-bottle rfnv-fnl">
               <div class="inwrapper mobile-position">
                 <div class="cards-image-mask promoimage">
                   <div class="product-text mobile dark last">3 BOTTLES</div>

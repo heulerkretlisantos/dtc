@@ -1,0 +1,634 @@
+<!DOCTYPE html><html><head>
+  <title>DTC</title>
+  <meta name="description" content="Alpha Bites">  <meta name="keywords" content="alpha bites">    <meta property="og:url" name="url" content="https://b6bm4bSooxVo.com/dtc">  <meta property="og:image" name="image" content="../assets/main/img/logo.png">  <meta property="twitter:image" name="image" content="https://b6bm4bSooxVo.com/assets/main/img/EtxzG0EwiwwV.png">  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="icon" href="../assets/favicon.ico">
+  
+  <!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
+	<!-- END Google Fonts -->
+
+	<link href="../assets/pages/dtc/lib/css/normalize.css" rel="stylesheet" type="text/css">
+	<link href="../assets/pages/dtc/lib/css/webflow.css" rel="stylesheet" type="text/css">
+	<link href="../assets/pages/dtc/lib/css/intermediary-one-option.webflow.css" rel="stylesheet" type="text/css">
+  
+  <!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="../assets/main/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/main/bootstrap/bootstrap-icons.min.css">
+	<!-- END Bootstrap -->
+  
+	<link href="../assets/pages/dtc/css/style.css" rel="stylesheet" type="text/css">
+
+
+    <script>
+      window.__app = {
+        visit_id: undefined,
+        query: Object.freeze(window.location.search.substr(1).split(/&+/).reduce(function(map,c) {
+          var a = c.match(/([^=]+)=(.*)/) || []
+          if (a[1]) {
+            map[a[1]] = a[2]
+          }
+          return map
+        }, {})),
+        cookies: Object.freeze(document.cookie.split(/;\s+/).reduce(function(map,c) {
+          var a = c.match(/([^=]+)=(.*)/) || []
+          if (a[1]) {
+            map[a[1]] = a[2]
+          }
+          return map
+        }, {})),
+      }
+    </script>
+  
+        <script defer="" async="">
+          (function(script) {
+            script.src = "//" + location.hostname
+              + "/api/visits?page_id=25&page_version=&request_id=AC462E16%3A32D6_C0A85015%3A01BB_66A406BF_118CC5%3A21F26D"
+              + "&querystring=" + encodeURIComponent(window.location.search.substr(1))
+              + "&fbclid=" + encodeURIComponent(__app.query.fbclid || "")
+              + "&fbp=" + encodeURIComponent(__app.cookies._fbp || "")
+              + "&fbc=" + encodeURIComponent(__app.cookies._fbc || "")
+              + "&referrer=" + encodeURIComponent(document.referrer);
+            document.head.appendChild(script);
+          })(document.createElement("script"));
+        </script>
+      
+        <script>
+          function recordEmailConversion(email) {
+            return new Promise(function(resolve, reject) {
+
+              const url = "//"
+                + location.hostname
+                + "/api/conversions/email-collected"
+                + location.search
+
+              const xhr = new XMLHttpRequest
+
+              xhr.onreadystatechange = function() {
+
+                if (xhr.readyState !== XMLHttpRequest.DONE) {
+                  return
+                }
+
+                if (Math.floor(xhr.status / 100) !== 2) {
+                  return reject(xhr.responseText || "Network Error")
+                }
+
+                try {
+                  var response = JSON.parse(xhr.responseText)
+                }
+                catch (error) {
+                  return reject("Failed parsing server response: " + error.toString())
+                }
+
+                resolve(response)
+              }
+
+              xhr.onerror = reject
+
+              xhr.open("POST", url)
+              xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
+
+              xhr.send(JSON.stringify({
+                email,
+                page_id: 25,
+                page_version: "" || undefined,
+                referrer: document.referrer,
+                request_id: "AC462E16:32D6_C0A85015:01BB_66A406BF_118CC5:21F26D" || undefined,
+              }))
+            })
+          }
+        </script>
+      </head>
+<body>
+
+  <style>
+  :root {
+    --main-color: #231f20;
+    --main-gold: #b87b3a;
+    --text-gold: #c49b56;
+    --light-gold: lightgoldenrodyellow;
+    --bs-secondary: var(--text-gold);
+  }
+
+  .rfnv-fnl { display: none; }
+
+  h1 { color: #ffd691; }
+  .hero-overlay { background-color: var(--main-color); }
+
+  .topbar { text-align: center; padding: 1rem 10px; background-color: var(--main-color); color: white; }
+  .topbar .row { position: relative; max-width: fit-content; margin: 0 auto; flex-wrap: nowrap; }
+  .topbar .row::before { content: ''; position: absolute; height: 2px; background: #303030; width: 100%; top: calc(50% - 1px); }
+  .topbar .col-1 { width: auto; background: var(--main-color); padding: 4px 16px; border-radius: 20px; border: 2px solid #303030; z-index: 1; }
+  .topbar .col-1:first-child { color: var(--text-gold); font-weight: bold; }
+  .topbar p { margin: 0; font-size: 1.2rem; }
+
+  .productcard { border-color: var(--main-color); }
+  .top-wrapper { background: linear-gradient(45deg, var(--main-color), grey, var(--main-color)); }
+  .productcard.promo { background-color: #faecd2; border-color: var(--main-gold); }
+  .top-wrapper.backred { background: linear-gradient(45deg, var(--main-gold), var(--text-gold), var(--main-gold)); border-color: var(--main-gold); }
+
+  .button { border-radius: 1rem; background: linear-gradient(to top, #d7d7d7 50%, #e1e1e1 50%); }
+  .button.accent { background: linear-gradient(to top, #f3c01a 50%, #fcc819 50%); }
+
+  svg.feature-icon { fill: white; }
+  .feature-text { color: #ffebc3; }
+
+  .pattern-bg { background-color: #000; background: repeating-linear-gradient(330deg,#252525,#252525 2px,#000 2px,#000 4px); }
+  .pattern-bg .text-primary { color: var(--bs-secondary)!important; }
+  .hero-fixed-bg-od { background: var(--main-color); }
+  .has-separator-center:after { margin-left: auto; margin-right: auto; }
+  .has-separator-center:after,
+  .has-separator:after {
+    content: ' ';
+    background-color: var(--bs-primary);
+    width: 85px;
+    position: relative;
+    mask-size: 9px 100%;
+    -webkit-mask-size: 9px 100%;
+    margin-top: 8px;
+    line-height: 1;
+    font-size: 0;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-bottom: 20px;
+    display: block;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iN3B4IiBoZWlnaHQ9IjEycHgiIHZpZXdCb3g9IjAgMCA3IDEyIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgo8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYzLjEgKDkyNDUyKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KPHRpdGxlPkZlbmNlMjwvdGl0bGU+CjxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgo8ZyBpZD0iRmVuY2UyIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgIDxwYXRoIGQ9Ik03LDcuMTUwNTc3NDIgTDMuNSwxMiBMMCw3LjE1MDU3NzQyIEwwLDQuODQ5NDIyNTggTDMuNSwwIEw3LDQuODQ5NDIyNTggTDcsNy4xNTA1Nzc0MiBaIE0zLjUsMi4yMDk0MDA5NSBMMC43NjQ0LDYgTDMuNSw5Ljc5MDU5OTA1IEw2LjIzNTYsNiBMMy41LDIuMjA5NDAwOTUgWiIgaWQ9IlNoYXBlIiBmaWxsPSIjMDAwMDAwIiBmaWxsLXJ1bGU9Im5vbnplcm8iPjwvcGF0aD4KPC9nPgo8L3N2Zz4=");
+    mask-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iN3B4IiBoZWlnaHQ9IjEycHgiIHZpZXdCb3g9IjAgMCA3IDEyIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgo8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYzLjEgKDkyNDUyKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KPHRpdGxlPkZlbmNlMjwvdGl0bGU+CjxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgo8ZyBpZD0iRmVuY2UyIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgIDxwYXRoIGQ9Ik03LDcuMTUwNTc3NDIgTDMuNSwxMiBMMCw3LjE1MDU3NzQyIEwwLDQuODQ5NDIyNTggTDMuNSwwIEw3LDQuODQ5NDIyNTggTDcsNy4xNTA1Nzc0MiBaIE0zLjUsMi4yMDk0MDA5NSBMMC43NjQ0LDYgTDMuNSw5Ljc5MDU5OTA1IEw2LjIzNTYsNiBMMy41LDIuMjA5NDAwOTUgWiIgaWQ9IlNoYXBlIiBmaWxsPSIjMDAwMDAwIiBmaWxsLXJ1bGU9Im5vbnplcm8iPjwvcGF0aD4KPC9nPgo8L3N2Zz4=");
+  }
+  .pattern-bg .has-separator-center:after, .pattern-bg .has-separator:after { background-color: var(--bs-secondary); }
+</style>
+
+<header class="topbar">
+  <div class="container">
+    <div class="row" style="justify-content: center; gap: 20px;">
+      <div class="col-1 text-center">Step 1</div>
+      <div class="col-1 text-center">Step 2</div>
+      <div class="col-1 text-center">Step 3</div>
+    </div>
+  </div>
+</header>
+
+<div class="position-relative" id="offer" style="text-align: center; margin-bottom: -3rem;">
+  <section class="hero-fixed-bg-od pt-10 pattern-bg">
+    <div class="container text-white z-2 position-relative">
+      <div class="row">
+        <div class="col-12 col-lg-9 mx-auto top-heading-box">
+          <h1 class="text-uppercase fw-bold text-white text-center has-separator-center"><span class="text-primary fw-bold">Step 1: </span><strong>SELECT YOUR DISCOUNT PACKAGE</strong></h1>
+          <p class="average-rating"><b>Average Customer Rating 4.8 <img src="../assets/main/products/img/stars.webp" loading="lazy" width="100" alt="stars" style="max-width: 100px;"></b></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-fixed-bg2 w-100 h-100 position-absolute start-0 top-0"></div>
+  </section>
+</div>
+
+<main>
+  <div class="hidden-section" style="text-align: center;">
+    <header id="hero-overlay" class="hero-overlay">
+      <div class="container">
+        <!--<div>
+      <h1 class="desktop yellow-heading">Select Your Discount Package:</h1>
+     </div>-->
+        <!--<h1 class="heading-mobile">STEP 1: <span class="regular-span">Select Your Discount Package</span></h1>
+     <div class="top-margin-30 mt9">
+      <div class="green-value-label">
+       <div class="text-block-3">Limited Time Offer</div>
+      </div>
+      <div class="margin-top-48">
+       <div class="container-flex mobile">
+        <h3 class="h3-heading m0">Average Customer Rating</h3>
+        <div class="rate">4.8</div><img src="../assets/main/products/img/stars.webp" loading="lazy" width="180" alt="stars" style="max-width: 100px;">
+       </div>
+      </div>
+     </div>-->
+
+        <div class="top-margin-50 extra10 mobile">
+          <div class="cards-grid-container">
+
+            <!-- mobile 6 bottles -->
+            <a href="https://buygoods.com/secure/checkout.html?account_id=9236&amp;product_codename=alp6DTC&amp;redirect=aHR0cHM6Ly9nZXRhbHBoYWJpdGVzLmNvbS91cHNlbGwtZHRj&amp;vid1=dtc" id="w-node-9311e3656624-ace7ac45" class="productcard promo order-link-6-bottle main-fnl">
+              <div class="inwrapper mobile-position">
+                <div class="cards-image-mask promoimage">
+                  <div class="product-text mobile dark">6 BOTTLES</div>
+                  <div class="bottles-wrapper">
+                    <img src="../assets/main/products/img/prod3.png" style="width: auto; max-height: 200px;">
+                  </div>
+                  <div class="sticker"><p>FREE SHIPPING<svg fill="none" viewBox="0 0 157 108"><path d="M151.733 71.685V68.2a7.702 7.702 0 0 1-5.118-2.313 7.593 7.593 0 0 1-2.155-5.154 7.439 7.439 0 0 1 2.114-5.194 7.554 7.554 0 0 1 5.159-2.273V50.03a13.686 13.686 0 0 0-1.755-6.223c-5.267-9.707-11.035-19.165-16.553-28.873a6.065 6.065 0 0 0-2.458-2.68 6.132 6.132 0 0 0-3.561-.804h-18.058c-5.517 0-8.276 2.489-8.276 8.213v52.27h-46.9a26.455 26.455 0 0 1 5.629 8.973 26.303 26.303 0 0 1 1.645 10.442h38.874c0-20.485 15.549-25.388 22.822-25.637a23.345 23.345 0 0 1 15.299 4.73 23.502 23.502 0 0 1 7.376 9.257 23.321 23.321 0 0 1 1.904 11.65c5.266.498 7.523.25 9.279-3.982V75.418a5.73 5.73 0 0 0-2.056-2.669 5.798 5.798 0 0 0-3.211-1.064zm-16.302-30.118h-22.07c-1.505 0-2.257-.498-2.257-1.991v-15.93c0-1.742.502-2.489 2.257-2.489h11.035a3.824 3.824 0 0 1 2.508 1.493 564.375 564.375 0 0 1 9.531 16.677c1.254 1.494.752 2.24-1.004 2.24zM61.446 91.348h38.874-38.874zm90.287-34.598a3.899 3.899 0 0 0-2.552 1.3c-.652.74-.995 1.7-.959 2.683.003.972.36 1.91 1.005 2.643a4.076 4.076 0 0 0 2.506 1.34V56.75z"></path><path d="M126.653 73.178a17.413 17.413 0 0 0-12.267 2.574 17.18 17.18 0 0 0-7.295 10.12c-2.257 9.459 4.013 20.411 14.045 21.904 2.549.339 5.141.136 7.606-.595a18.185 18.185 0 0 0 6.688-3.643 18.039 18.039 0 0 0 4.59-6.048 17.909 17.909 0 0 0 1.681-7.386 17.496 17.496 0 0 0-4.424-11.178 17.742 17.742 0 0 0-10.624-5.748zm-2.508 24.89a7.703 7.703 0 0 1-2.995-.552 7.649 7.649 0 0 1-2.54-1.67 7.582 7.582 0 0 1-2.24-5.493c0-2.014.806-3.945 2.241-5.368a7.678 7.678 0 0 1 5.409-2.224c2.029 0 3.974.8 5.409 2.224a7.565 7.565 0 0 1 2.24 5.368 7.41 7.41 0 0 1-.499 2.934 7.46 7.46 0 0 1-1.614 2.507 7.529 7.529 0 0 1-2.472 1.683 7.582 7.582 0 0 1-2.939.592zM44.14 73.925a17.68 17.68 0 0 0-12.744.09 17.504 17.504 0 0 0-9.326 8.622 17.106 17.106 0 0 0-1.144 12.659 17.245 17.245 0 0 0 7.916 9.991 17.68 17.68 0 0 0 13.506.905 17.572 17.572 0 0 0 5.97-3.441 17.438 17.438 0 0 0 4.17-5.459 17.32 17.32 0 0 0 .745-13.414 17.397 17.397 0 0 0-3.54-5.882 17.547 17.547 0 0 0-5.552-4.071zm-6.27 24.144a7.855 7.855 0 0 1-5.482-2.275 7.736 7.736 0 0 1-2.292-5.441 7.54 7.54 0 0 1 .557-2.973 7.587 7.587 0 0 1 1.682-2.521 7.655 7.655 0 0 1 2.54-1.67 7.7 7.7 0 0 1 2.995-.552c1.996 0 3.91.786 5.32 2.187a7.439 7.439 0 0 1 2.205 5.28 7.415 7.415 0 0 1-.423 3.01 7.458 7.458 0 0 1-1.596 2.595 7.524 7.524 0 0 1-2.505 1.748 7.573 7.573 0 0 1-3 .612zm-23.574-6.721c-3.512 0-6.772.25-10.032 0a4.877 4.877 0 0 1-3.025-1.572A4.808 4.808 0 0 1 0 86.62v-.996l14.296 5.725z"></path><path d="M22.07 71.934c-1.755 1.742-7.774 6.148-7.9 19.365L0 85.623v-8.96a4.449 4.449 0 0 1 1.143-3.243 4.512 4.512 0 0 1 3.12-1.486c5.769-.25 11.537 0 17.807 0zM96.306 4.978v62.475H3.511V4.978a4.96 4.96 0 0 1 1.47-3.52A5.035 5.035 0 0 1 8.526 0H91.54a5.032 5.032 0 0 1 3.386 1.543 4.958 4.958 0 0 1 1.38 3.435z"></path><defs><clipPath id="clip0"><path fill="#fff" d="M0 0h157v108H0z"></path></clipPath></defs></svg></p></div>
+                </div>
+                <div id="w-node-9311e3656636-ace7ac45" class="text-column">
+                  <div class="center-align-center">
+                    <div class="price-wrapper first">
+                      <div class="price medium dark">$</div>
+                      <div class="price dark desktop">49</div>
+                      <div class="price dark mobile">49</div>
+                      <div class="price tiny dark">/ bottle</div>
+                    </div>
+                    <div class="div-block-13">
+                      <div class="container-flex m40-20 mobile">
+                        <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 86 86" src="../assets/pages/dtc/lib/img/checkmark.svg" loading="lazy" width="66" class="checkmark"><rect x="4" y="4" width="78" height="78" rx="39" stroke="#fff" stroke-width="8"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M35.512 49.083L57.729 26.79c1.05-1.053 2.666-1.053 3.636 0l2.908 2.838c.97 1.053.97 2.675 0 3.648L37.37 60.27c-1.05.973-2.666.973-3.636 0L20.727 47.22c-.97-.973-.97-2.594 0-3.648l2.909-2.837c.969-1.054 2.585-1.054 3.635 0l8.24 8.35z" fill="#fff"></path></svg>
+                        <div class="green-label">
+                          <div class="text-block">MOST POPULAR</div>
+                        </div>
+                      </div>
+                      <div class="yellow-value-label">
+                        <div class="text-block-5">Best Value!</div>
+                      </div>
+                    </div>
+                    <div class="save-text">
+                      <div class="product-text mobile">YOU SAVE $1488!</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- mobile 6 bottles RFNV -->
+            <a href="https://buygoods.com/secure/checkout.html?account_id=9236&amp;product_codename=alp6DTC&amp;redirect=aHR0cHM6Ly9nZXRhbHBoYWJpdGVzLmNvbS91cHNlbGwtdHNsMi1lcw==&amp;vid1=dtc" id="w-node-9311e3656624-ace7ac45" class="productcard promo order-link-6-bottle rfnv-fnl">
+              <div class="inwrapper mobile-position">
+                <div class="cards-image-mask promoimage">
+                  <div class="product-text mobile dark">6 BOTTLES</div>
+                  <div class="bottles-wrapper">
+                    <img src="../assets/main/products/img/prod3.png" style="width: auto; max-height: 200px;">
+                  </div>
+                  <div class="sticker"><p>FREE SHIPPING<svg fill="none" viewBox="0 0 157 108"><path d="M151.733 71.685V68.2a7.702 7.702 0 0 1-5.118-2.313 7.593 7.593 0 0 1-2.155-5.154 7.439 7.439 0 0 1 2.114-5.194 7.554 7.554 0 0 1 5.159-2.273V50.03a13.686 13.686 0 0 0-1.755-6.223c-5.267-9.707-11.035-19.165-16.553-28.873a6.065 6.065 0 0 0-2.458-2.68 6.132 6.132 0 0 0-3.561-.804h-18.058c-5.517 0-8.276 2.489-8.276 8.213v52.27h-46.9a26.455 26.455 0 0 1 5.629 8.973 26.303 26.303 0 0 1 1.645 10.442h38.874c0-20.485 15.549-25.388 22.822-25.637a23.345 23.345 0 0 1 15.299 4.73 23.502 23.502 0 0 1 7.376 9.257 23.321 23.321 0 0 1 1.904 11.65c5.266.498 7.523.25 9.279-3.982V75.418a5.73 5.73 0 0 0-2.056-2.669 5.798 5.798 0 0 0-3.211-1.064zm-16.302-30.118h-22.07c-1.505 0-2.257-.498-2.257-1.991v-15.93c0-1.742.502-2.489 2.257-2.489h11.035a3.824 3.824 0 0 1 2.508 1.493 564.375 564.375 0 0 1 9.531 16.677c1.254 1.494.752 2.24-1.004 2.24zM61.446 91.348h38.874-38.874zm90.287-34.598a3.899 3.899 0 0 0-2.552 1.3c-.652.74-.995 1.7-.959 2.683.003.972.36 1.91 1.005 2.643a4.076 4.076 0 0 0 2.506 1.34V56.75z"></path><path d="M126.653 73.178a17.413 17.413 0 0 0-12.267 2.574 17.18 17.18 0 0 0-7.295 10.12c-2.257 9.459 4.013 20.411 14.045 21.904 2.549.339 5.141.136 7.606-.595a18.185 18.185 0 0 0 6.688-3.643 18.039 18.039 0 0 0 4.59-6.048 17.909 17.909 0 0 0 1.681-7.386 17.496 17.496 0 0 0-4.424-11.178 17.742 17.742 0 0 0-10.624-5.748zm-2.508 24.89a7.703 7.703 0 0 1-2.995-.552 7.649 7.649 0 0 1-2.54-1.67 7.582 7.582 0 0 1-2.24-5.493c0-2.014.806-3.945 2.241-5.368a7.678 7.678 0 0 1 5.409-2.224c2.029 0 3.974.8 5.409 2.224a7.565 7.565 0 0 1 2.24 5.368 7.41 7.41 0 0 1-.499 2.934 7.46 7.46 0 0 1-1.614 2.507 7.529 7.529 0 0 1-2.472 1.683 7.582 7.582 0 0 1-2.939.592zM44.14 73.925a17.68 17.68 0 0 0-12.744.09 17.504 17.504 0 0 0-9.326 8.622 17.106 17.106 0 0 0-1.144 12.659 17.245 17.245 0 0 0 7.916 9.991 17.68 17.68 0 0 0 13.506.905 17.572 17.572 0 0 0 5.97-3.441 17.438 17.438 0 0 0 4.17-5.459 17.32 17.32 0 0 0 .745-13.414 17.397 17.397 0 0 0-3.54-5.882 17.547 17.547 0 0 0-5.552-4.071zm-6.27 24.144a7.855 7.855 0 0 1-5.482-2.275 7.736 7.736 0 0 1-2.292-5.441 7.54 7.54 0 0 1 .557-2.973 7.587 7.587 0 0 1 1.682-2.521 7.655 7.655 0 0 1 2.54-1.67 7.7 7.7 0 0 1 2.995-.552c1.996 0 3.91.786 5.32 2.187a7.439 7.439 0 0 1 2.205 5.28 7.415 7.415 0 0 1-.423 3.01 7.458 7.458 0 0 1-1.596 2.595 7.524 7.524 0 0 1-2.505 1.748 7.573 7.573 0 0 1-3 .612zm-23.574-6.721c-3.512 0-6.772.25-10.032 0a4.877 4.877 0 0 1-3.025-1.572A4.808 4.808 0 0 1 0 86.62v-.996l14.296 5.725z"></path><path d="M22.07 71.934c-1.755 1.742-7.774 6.148-7.9 19.365L0 85.623v-8.96a4.449 4.449 0 0 1 1.143-3.243 4.512 4.512 0 0 1 3.12-1.486c5.769-.25 11.537 0 17.807 0zM96.306 4.978v62.475H3.511V4.978a4.96 4.96 0 0 1 1.47-3.52A5.035 5.035 0 0 1 8.526 0H91.54a5.032 5.032 0 0 1 3.386 1.543 4.958 4.958 0 0 1 1.38 3.435z"></path><defs><clipPath id="clip0"><path fill="#fff" d="M0 0h157v108H0z"></path></clipPath></defs></svg></p></div>
+                </div>
+                <div id="w-node-9311e3656636-ace7ac45" class="text-column">
+                  <div class="center-align-center">
+                    <div class="price-wrapper first">
+                      <div class="price medium dark">$</div>
+                      <div class="price dark desktop">49</div>
+                      <div class="price dark mobile">49</div>
+                      <div class="price tiny dark">/ bottle</div>
+                    </div>
+                    <div class="div-block-13">
+                      <div class="container-flex m40-20 mobile">
+                        <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 86 86" src="../assets/pages/dtc/lib/img/checkmark.svg" loading="lazy" width="66" class="checkmark"><rect x="4" y="4" width="78" height="78" rx="39" stroke="#fff" stroke-width="8"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M35.512 49.083L57.729 26.79c1.05-1.053 2.666-1.053 3.636 0l2.908 2.838c.97 1.053.97 2.675 0 3.648L37.37 60.27c-1.05.973-2.666.973-3.636 0L20.727 47.22c-.97-.973-.97-2.594 0-3.648l2.909-2.837c.969-1.054 2.585-1.054 3.635 0l8.24 8.35z" fill="#fff"></path></svg>
+                        <div class="green-label">
+                          <div class="text-block">MOST POPULAR</div>
+                        </div>
+                      </div>
+                      <div class="yellow-value-label">
+                        <div class="text-block-5">Best Value!</div>
+                      </div>
+                    </div>
+                    <div class="save-text">
+                      <div class="product-text mobile">YOU SAVE $1488!</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- mobile 3 bottles -->
+            <a href="https://buygoods.com/secure/checkout.html?account_id=9236&amp;product_codename=alp3DTC&amp;redirect=aHR0cHM6Ly9nZXRhbHBoYWJpdGVzLmNvbS91cHNlbGwtZHRj&amp;vid1=dtc" id="w-node-9311e3656658-ace7ac45" class="productcard promo white order-link-3-bottle main-fnl">
+              <div class="inwrapper mobile-position">
+                <div class="cards-image-mask promoimage">
+                  <div class="product-text mobile dark last">3 BOTTLES</div>
+                  <div class="bottles-wrapper _3-bottles">
+                    <img src="../assets/main/products/img/prod2.png" style="width: auto; max-height: 200px;">
+                  </div>
+                  <div class="sticker"><p>FREE SHIPPING<svg fill="none" viewBox="0 0 157 108"><path d="M151.733 71.685V68.2a7.702 7.702 0 0 1-5.118-2.313 7.593 7.593 0 0 1-2.155-5.154 7.439 7.439 0 0 1 2.114-5.194 7.554 7.554 0 0 1 5.159-2.273V50.03a13.686 13.686 0 0 0-1.755-6.223c-5.267-9.707-11.035-19.165-16.553-28.873a6.065 6.065 0 0 0-2.458-2.68 6.132 6.132 0 0 0-3.561-.804h-18.058c-5.517 0-8.276 2.489-8.276 8.213v52.27h-46.9a26.455 26.455 0 0 1 5.629 8.973 26.303 26.303 0 0 1 1.645 10.442h38.874c0-20.485 15.549-25.388 22.822-25.637a23.345 23.345 0 0 1 15.299 4.73 23.502 23.502 0 0 1 7.376 9.257 23.321 23.321 0 0 1 1.904 11.65c5.266.498 7.523.25 9.279-3.982V75.418a5.73 5.73 0 0 0-2.056-2.669 5.798 5.798 0 0 0-3.211-1.064zm-16.302-30.118h-22.07c-1.505 0-2.257-.498-2.257-1.991v-15.93c0-1.742.502-2.489 2.257-2.489h11.035a3.824 3.824 0 0 1 2.508 1.493 564.375 564.375 0 0 1 9.531 16.677c1.254 1.494.752 2.24-1.004 2.24zM61.446 91.348h38.874-38.874zm90.287-34.598a3.899 3.899 0 0 0-2.552 1.3c-.652.74-.995 1.7-.959 2.683.003.972.36 1.91 1.005 2.643a4.076 4.076 0 0 0 2.506 1.34V56.75z"></path><path d="M126.653 73.178a17.413 17.413 0 0 0-12.267 2.574 17.18 17.18 0 0 0-7.295 10.12c-2.257 9.459 4.013 20.411 14.045 21.904 2.549.339 5.141.136 7.606-.595a18.185 18.185 0 0 0 6.688-3.643 18.039 18.039 0 0 0 4.59-6.048 17.909 17.909 0 0 0 1.681-7.386 17.496 17.496 0 0 0-4.424-11.178 17.742 17.742 0 0 0-10.624-5.748zm-2.508 24.89a7.703 7.703 0 0 1-2.995-.552 7.649 7.649 0 0 1-2.54-1.67 7.582 7.582 0 0 1-2.24-5.493c0-2.014.806-3.945 2.241-5.368a7.678 7.678 0 0 1 5.409-2.224c2.029 0 3.974.8 5.409 2.224a7.565 7.565 0 0 1 2.24 5.368 7.41 7.41 0 0 1-.499 2.934 7.46 7.46 0 0 1-1.614 2.507 7.529 7.529 0 0 1-2.472 1.683 7.582 7.582 0 0 1-2.939.592zM44.14 73.925a17.68 17.68 0 0 0-12.744.09 17.504 17.504 0 0 0-9.326 8.622 17.106 17.106 0 0 0-1.144 12.659 17.245 17.245 0 0 0 7.916 9.991 17.68 17.68 0 0 0 13.506.905 17.572 17.572 0 0 0 5.97-3.441 17.438 17.438 0 0 0 4.17-5.459 17.32 17.32 0 0 0 .745-13.414 17.397 17.397 0 0 0-3.54-5.882 17.547 17.547 0 0 0-5.552-4.071zm-6.27 24.144a7.855 7.855 0 0 1-5.482-2.275 7.736 7.736 0 0 1-2.292-5.441 7.54 7.54 0 0 1 .557-2.973 7.587 7.587 0 0 1 1.682-2.521 7.655 7.655 0 0 1 2.54-1.67 7.7 7.7 0 0 1 2.995-.552c1.996 0 3.91.786 5.32 2.187a7.439 7.439 0 0 1 2.205 5.28 7.415 7.415 0 0 1-.423 3.01 7.458 7.458 0 0 1-1.596 2.595 7.524 7.524 0 0 1-2.505 1.748 7.573 7.573 0 0 1-3 .612zm-23.574-6.721c-3.512 0-6.772.25-10.032 0a4.877 4.877 0 0 1-3.025-1.572A4.808 4.808 0 0 1 0 86.62v-.996l14.296 5.725z"></path><path d="M22.07 71.934c-1.755 1.742-7.774 6.148-7.9 19.365L0 85.623v-8.96a4.449 4.449 0 0 1 1.143-3.243 4.512 4.512 0 0 1 3.12-1.486c5.769-.25 11.537 0 17.807 0zM96.306 4.978v62.475H3.511V4.978a4.96 4.96 0 0 1 1.47-3.52A5.035 5.035 0 0 1 8.526 0H91.54a5.032 5.032 0 0 1 3.386 1.543 4.958 4.958 0 0 1 1.38 3.435z"></path><defs><clipPath id="clip0"><path fill="#fff" d="M0 0h157v108H0z"></path></clipPath></defs></svg></p></div>
+                </div>
+                <div id="w-node-9311e3656667-ace7ac45" class="text-column">
+                  <div class="center-align-center middle">
+                    <div class="price-wrapper">
+                      <div class="price medium dark">$</div>
+                      <div class="price dark mobile">69</div>
+                      <div class="price tiny dark">/ bottle</div>
+                    </div>
+                    <div class="gren-small-value-label">
+                      <div class="text-block-4">Good value</div>
+                    </div>
+                    <div class="save-text green">
+                      <div class="product-text mobile green-accent s">YOU SAVE $690!</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- mobile 3 bottles RFNV -->
+            <a href="https://buygoods.com/secure/checkout.html?account_id=9236&amp;product_codename=alp3DTC&amp;redirect=aHR0cHM6Ly9nZXRhbHBoYWJpdGVzLmNvbS91cHNlbGwtdHNsMi1lcw==&amp;vid1=dtc" id="w-node-9311e3656658-ace7ac45" class="productcard promo white order-link-3-bottle rfnv-fnl">
+              <div class="inwrapper mobile-position">
+                <div class="cards-image-mask promoimage">
+                  <div class="product-text mobile dark last">3 BOTTLES</div>
+                  <div class="bottles-wrapper _3-bottles">
+                    <img src="../assets/main/products/img/prod2.png" style="width: auto; max-height: 200px;">
+                  </div>
+                  <div class="sticker"><p>FREE SHIPPING<svg fill="none" viewBox="0 0 157 108"><path d="M151.733 71.685V68.2a7.702 7.702 0 0 1-5.118-2.313 7.593 7.593 0 0 1-2.155-5.154 7.439 7.439 0 0 1 2.114-5.194 7.554 7.554 0 0 1 5.159-2.273V50.03a13.686 13.686 0 0 0-1.755-6.223c-5.267-9.707-11.035-19.165-16.553-28.873a6.065 6.065 0 0 0-2.458-2.68 6.132 6.132 0 0 0-3.561-.804h-18.058c-5.517 0-8.276 2.489-8.276 8.213v52.27h-46.9a26.455 26.455 0 0 1 5.629 8.973 26.303 26.303 0 0 1 1.645 10.442h38.874c0-20.485 15.549-25.388 22.822-25.637a23.345 23.345 0 0 1 15.299 4.73 23.502 23.502 0 0 1 7.376 9.257 23.321 23.321 0 0 1 1.904 11.65c5.266.498 7.523.25 9.279-3.982V75.418a5.73 5.73 0 0 0-2.056-2.669 5.798 5.798 0 0 0-3.211-1.064zm-16.302-30.118h-22.07c-1.505 0-2.257-.498-2.257-1.991v-15.93c0-1.742.502-2.489 2.257-2.489h11.035a3.824 3.824 0 0 1 2.508 1.493 564.375 564.375 0 0 1 9.531 16.677c1.254 1.494.752 2.24-1.004 2.24zM61.446 91.348h38.874-38.874zm90.287-34.598a3.899 3.899 0 0 0-2.552 1.3c-.652.74-.995 1.7-.959 2.683.003.972.36 1.91 1.005 2.643a4.076 4.076 0 0 0 2.506 1.34V56.75z"></path><path d="M126.653 73.178a17.413 17.413 0 0 0-12.267 2.574 17.18 17.18 0 0 0-7.295 10.12c-2.257 9.459 4.013 20.411 14.045 21.904 2.549.339 5.141.136 7.606-.595a18.185 18.185 0 0 0 6.688-3.643 18.039 18.039 0 0 0 4.59-6.048 17.909 17.909 0 0 0 1.681-7.386 17.496 17.496 0 0 0-4.424-11.178 17.742 17.742 0 0 0-10.624-5.748zm-2.508 24.89a7.703 7.703 0 0 1-2.995-.552 7.649 7.649 0 0 1-2.54-1.67 7.582 7.582 0 0 1-2.24-5.493c0-2.014.806-3.945 2.241-5.368a7.678 7.678 0 0 1 5.409-2.224c2.029 0 3.974.8 5.409 2.224a7.565 7.565 0 0 1 2.24 5.368 7.41 7.41 0 0 1-.499 2.934 7.46 7.46 0 0 1-1.614 2.507 7.529 7.529 0 0 1-2.472 1.683 7.582 7.582 0 0 1-2.939.592zM44.14 73.925a17.68 17.68 0 0 0-12.744.09 17.504 17.504 0 0 0-9.326 8.622 17.106 17.106 0 0 0-1.144 12.659 17.245 17.245 0 0 0 7.916 9.991 17.68 17.68 0 0 0 13.506.905 17.572 17.572 0 0 0 5.97-3.441 17.438 17.438 0 0 0 4.17-5.459 17.32 17.32 0 0 0 .745-13.414 17.397 17.397 0 0 0-3.54-5.882 17.547 17.547 0 0 0-5.552-4.071zm-6.27 24.144a7.855 7.855 0 0 1-5.482-2.275 7.736 7.736 0 0 1-2.292-5.441 7.54 7.54 0 0 1 .557-2.973 7.587 7.587 0 0 1 1.682-2.521 7.655 7.655 0 0 1 2.54-1.67 7.7 7.7 0 0 1 2.995-.552c1.996 0 3.91.786 5.32 2.187a7.439 7.439 0 0 1 2.205 5.28 7.415 7.415 0 0 1-.423 3.01 7.458 7.458 0 0 1-1.596 2.595 7.524 7.524 0 0 1-2.505 1.748 7.573 7.573 0 0 1-3 .612zm-23.574-6.721c-3.512 0-6.772.25-10.032 0a4.877 4.877 0 0 1-3.025-1.572A4.808 4.808 0 0 1 0 86.62v-.996l14.296 5.725z"></path><path d="M22.07 71.934c-1.755 1.742-7.774 6.148-7.9 19.365L0 85.623v-8.96a4.449 4.449 0 0 1 1.143-3.243 4.512 4.512 0 0 1 3.12-1.486c5.769-.25 11.537 0 17.807 0zM96.306 4.978v62.475H3.511V4.978a4.96 4.96 0 0 1 1.47-3.52A5.035 5.035 0 0 1 8.526 0H91.54a5.032 5.032 0 0 1 3.386 1.543 4.958 4.958 0 0 1 1.38 3.435z"></path><defs><clipPath id="clip0"><path fill="#fff" d="M0 0h157v108H0z"></path></clipPath></defs></svg></p></div>
+                </div>
+                <div id="w-node-9311e3656667-ace7ac45" class="text-column">
+                  <div class="center-align-center middle">
+                    <div class="price-wrapper">
+                      <div class="price medium dark">$</div>
+                      <div class="price dark mobile">69</div>
+                      <div class="price tiny dark">/ bottle</div>
+                    </div>
+                    <div class="gren-small-value-label">
+                      <div class="text-block-4">Good value</div>
+                    </div>
+                    <div class="save-text green">
+                      <div class="product-text mobile green-accent s">YOU SAVE $690!</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- mobile 2 bottles -->
+            <a href="https://buygoods.com/secure/checkout.html?account_id=9236&amp;product_codename=alp2DTC&amp;redirect=aHR0cHM6Ly9nZXRhbHBoYWJpdGVzLmNvbS91cHNlbGwtZHRj&amp;vid1=dtc" id="w-node-9311e3656684-ace7ac45" class="productcard promo white order-link-1-bottle main-fnl">
+              <div class="inwrapper mobile-position">
+                <div class="cards-image-mask promoimage">
+                  <div class="product-text mobile dark last">2 BOTTLES</div>
+                  <div class="bottles-wrapper _1-bottle">
+                    <img src="../assets/main/products/img/prod4.png" style="width: auto; max-height: 200px;">
+                  </div>
+                </div>
+                <div id="w-node-9311e3656690-ace7ac45" class="text-column">
+                  <div class="center-align">
+                    <div class="price-wrapper last">
+                      <div class="price medium dark">$</div>
+                      <div class="price dark desktop">47</div>
+                      <div class="price dark mobile">79</div>
+                      <div class="price tiny">/ bottle</div>
+                    </div>
+                    <div class="shipping-text">
+                      <div class="shipping _80-opacity">+ $9.99 SHIPPING</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- mobile 2 bottles RFNV -->
+            <a href="https://buygoods.com/secure/checkout.html?account_id=9236&amp;product_codename=alp2DTC&amp;redirect=aHR0cHM6Ly9nZXRhbHBoYWJpdGVzLmNvbS91cHNlbGwtdHNsMi1lcw==&amp;vid1=dtc" id="w-node-9311e3656684-ace7ac45" class="productcard promo white order-link-1-bottle rfnv-fnl">
+              <div class="inwrapper mobile-position">
+                <div class="cards-image-mask promoimage">
+                  <div class="product-text mobile dark last">2 BOTTLES</div>
+                  <div class="bottles-wrapper _1-bottle">
+                    <img src="../assets/main/products/img/prod4.png" style="width: auto; max-height: 200px;">
+                  </div>
+                </div>
+                <div id="w-node-9311e3656690-ace7ac45" class="text-column">
+                  <div class="center-align">
+                    <div class="price-wrapper last">
+                      <div class="price medium dark">$</div>
+                      <div class="price dark desktop">47</div>
+                      <div class="price dark mobile">79</div>
+                      <div class="price tiny">/ bottle</div>
+                    </div>
+                    <div class="shipping-text">
+                      <div class="shipping _80-opacity">+ $9.99 SHIPPING</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+        <div class="top-margin-30 mt0">
+          <div class="cards-grid-container">
+
+            <!-- desktop 2 bottles -->
+            <div id="w-node-9311e36566ac-ace7ac45" class="productcard order-link-1-bottle">
+              <div class="top-wrapper">
+                <h3 class="h3-heading">BASIC - 2 BOTTLES</h3>
+              </div>
+              <div class="value" style="height: 30px;"></div>
+              <div class="cards-image-mask mt _90-opacity">
+                <div class="bottles-wrapper">
+                  <div class="bottles-wrapper">
+                    <img src="../assets/main/products/img/prod4.png" style="width: auto; max-height: 200px;">
+                  </div>
+                </div>
+              </div>
+              <div class="price-wrapper _80-opacity">
+                <div class="price medium">$</div>
+                <div class="price">79</div>
+                <div class="price tiny">/ Bottle</div>
+              </div>
+              <a href="https://buygoods.com/secure/checkout.html?account_id=9236&amp;product_codename=alp2DTC&amp;redirect=aHR0cHM6Ly9nZXRhbHBoYWJpdGVzLmNvbS91cHNlbGwtZHRj&amp;vid1=dtc" class="button _80-opacity w-button order-link-1-bottle main-fnl">Buy Now</a>
+              <a href="https://buygoods.com/secure/checkout.html?account_id=9236&amp;product_codename=alp2DTC&amp;redirect=aHR0cHM6Ly9nZXRhbHBoYWJpdGVzLmNvbS91cHNlbGwtdHNsMi1lcw==&amp;vid1=dtc" class="button _80-opacity w-button order-link-1-bottle rfnv-fnl">Buy Now</a>
+              <div class="margin-top-40">
+                <div class="shipping _80-opacity">+ $9.99 SHIPPING</div>
+                <div class="container-flex _80-opacity">
+                  <div class="container-flex">
+                    <div class="old-price">$594.00</div>
+                    <div class="deco-line strike"></div>
+                  </div>
+                  <div class="old-price ml20">$158</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- desktop 6 bottles -->
+            <div id="w-node-9311e36566c6-ace7ac45" class="productcard promo order-link-6-bottle">
+              <div class="inwrapper">
+                <div class="top-wrapper backred">
+                  <h3 class="h3-heading promot">BEST VALUE - 6 BOTTLES</h3>
+                </div>
+                <div class="promo">YOU SAVE $1488!</div>
+                <div class="cards-image-mask promoimage">
+                  <div class="bottles-wrapper">
+                    <img src="../assets/main/products/img/prod3.png" style="width: auto; max-height: 200px;">
+                    <img src="../assets/pages/dtc/lib/img/Popular-label.svg" loading="lazy" alt="" class="label">
+                  </div>
+                </div>
+                <div class="price-wrapper">
+                  <div class="price medium dark">$</div>
+                  <div class="price dark">49</div>
+                  <div class="price tiny dark">/ Bottle</div>
+                </div>
+                <a href="https://buygoods.com/secure/checkout.html?account_id=9236&amp;product_codename=alp6DTC&amp;redirect=aHR0cHM6Ly9nZXRhbHBoYWJpdGVzLmNvbS91cHNlbGwtZHRj&amp;vid1=dtc" class="button accent w-button order-link-6-bottle main-fnl">Buy Now</a>
+                <a href="https://buygoods.com/secure/checkout.html?account_id=9236&amp;product_codename=alp6DTC&amp;redirect=aHR0cHM6Ly9nZXRhbHBoYWJpdGVzLmNvbS91cHNlbGwtdHNsMi1lcw==&amp;vid1=dtc" class="button accent w-button order-link-6-bottle rfnv-fnl">Buy Now</a>
+                <div class="margin-top-15">
+                  <div class="container-flex mb15">
+                    <div class="shipping red">FREE SHIPPING</div>
+                    <img src="../assets/pages/dtc/lib/img/truck-int.svg" loading="lazy" alt="" class="icon full">
+                  </div>
+                  <div class="container-flex mt10">
+                    <div class="container-flex">
+                      <div class="old-price">$1782.00</div>
+                      <div class="deco-line strike"></div>
+                    </div>
+                    <div class="old-price ml20">$294</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- desktop 3 bottles -->
+            <div id="w-node-9311e36566ea-ace7ac45" class="productcard order-link-3-bottle">
+              <div class="top-wrapper">
+                <h3 class="h3-heading">GOOD VALUE - 3 BOTTLES</h3>
+              </div>
+              <div class="value">YOU SAVE $690!</div>
+              <div class="cards-image-mask mt _90-opacity">
+                <div class="bottles-wrapper">
+                  <img src="../assets/main/products/img/prod2.png" style="width: auto; max-height: 200px;">
+                </div>
+              </div>
+              <div class="price-wrapper _80-opacity">
+                <div class="price medium">$</div>
+                <div class="price">69</div>
+                <div class="price tiny">/ Bottle</div>
+              </div>
+              <a href="https://buygoods.com/secure/checkout.html?account_id=9236&amp;product_codename=alp3DTC&amp;redirect=aHR0cHM6Ly9nZXRhbHBoYWJpdGVzLmNvbS91cHNlbGwtZHRj&amp;vid1=dtc" class="button _80-opacity w-button order-link-3-bottle main-fnl">Buy Now</a>
+              <a href="https://buygoods.com/secure/checkout.html?account_id=9236&amp;product_codename=alp3DTC&amp;redirect=aHR0cHM6Ly9nZXRhbHBoYWJpdGVzLmNvbS91cHNlbGwtdHNsMi1lcw==&amp;vid1=dtc" class="button _80-opacity w-button order-link-3-bottle rfnv-fnl">Buy Now</a>
+              <div class="margin-top-32">
+                <div class="container-flex mb10">
+                  <div class="shipping mb0 _80-opacity">FREE SHIPPING</div><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 157 108" src="../assets/pages/dtc/lib/img/truck-int-1.svg" loading="lazy" class="icon _80-opacity"><path d="M151.733 71.685V68.2a7.702 7.702 0 0 1-5.118-2.313 7.593 7.593 0 0 1-2.155-5.154 7.439 7.439 0 0 1 2.114-5.194 7.554 7.554 0 0 1 5.159-2.273V50.03a13.686 13.686 0 0 0-1.755-6.223c-5.267-9.707-11.035-19.165-16.553-28.873a6.065 6.065 0 0 0-2.458-2.68 6.132 6.132 0 0 0-3.561-.804h-18.058c-5.517 0-8.276 2.489-8.276 8.213v52.27h-46.9a26.455 26.455 0 0 1 5.629 8.973 26.303 26.303 0 0 1 1.645 10.442h38.874c0-20.485 15.549-25.388 22.822-25.637a23.345 23.345 0 0 1 15.299 4.73 23.502 23.502 0 0 1 7.376 9.257 23.321 23.321 0 0 1 1.904 11.65c5.266.498 7.523.25 9.279-3.982V75.418a5.73 5.73 0 0 0-2.056-2.669 5.798 5.798 0 0 0-3.211-1.064zm-16.302-30.118h-22.07c-1.505 0-2.257-.498-2.257-1.991v-15.93c0-1.742.502-2.489 2.257-2.489h11.035a3.824 3.824 0 0 1 2.508 1.493 564.375 564.375 0 0 1 9.531 16.677c1.254 1.494.752 2.24-1.004 2.24zM61.446 91.348h38.874-38.874zm90.287-34.598a3.899 3.899 0 0 0-2.552 1.3c-.652.74-.995 1.7-.959 2.683.003.972.36 1.91 1.005 2.643a4.076 4.076 0 0 0 2.506 1.34V56.75z"></path><path d="M126.653 73.178a17.413 17.413 0 0 0-12.267 2.574 17.18 17.18 0 0 0-7.295 10.12c-2.257 9.459 4.013 20.411 14.045 21.904 2.549.339 5.141.136 7.606-.595a18.185 18.185 0 0 0 6.688-3.643 18.039 18.039 0 0 0 4.59-6.048 17.909 17.909 0 0 0 1.681-7.386 17.496 17.496 0 0 0-4.424-11.178 17.742 17.742 0 0 0-10.624-5.748zm-2.508 24.89a7.703 7.703 0 0 1-2.995-.552 7.649 7.649 0 0 1-2.54-1.67 7.582 7.582 0 0 1-2.24-5.493c0-2.014.806-3.945 2.241-5.368a7.678 7.678 0 0 1 5.409-2.224c2.029 0 3.974.8 5.409 2.224a7.565 7.565 0 0 1 2.24 5.368 7.41 7.41 0 0 1-.499 2.934 7.46 7.46 0 0 1-1.614 2.507 7.529 7.529 0 0 1-2.472 1.683 7.582 7.582 0 0 1-2.939.592zM44.14 73.925a17.68 17.68 0 0 0-12.744.09 17.504 17.504 0 0 0-9.326 8.622 17.106 17.106 0 0 0-1.144 12.659 17.245 17.245 0 0 0 7.916 9.991 17.68 17.68 0 0 0 13.506.905 17.572 17.572 0 0 0 5.97-3.441 17.438 17.438 0 0 0 4.17-5.459 17.32 17.32 0 0 0 .745-13.414 17.397 17.397 0 0 0-3.54-5.882 17.547 17.547 0 0 0-5.552-4.071zm-6.27 24.144a7.855 7.855 0 0 1-5.482-2.275 7.736 7.736 0 0 1-2.292-5.441 7.54 7.54 0 0 1 .557-2.973 7.587 7.587 0 0 1 1.682-2.521 7.655 7.655 0 0 1 2.54-1.67 7.7 7.7 0 0 1 2.995-.552c1.996 0 3.91.786 5.32 2.187a7.439 7.439 0 0 1 2.205 5.28 7.415 7.415 0 0 1-.423 3.01 7.458 7.458 0 0 1-1.596 2.595 7.524 7.524 0 0 1-2.505 1.748 7.573 7.573 0 0 1-3 .612zm-23.574-6.721c-3.512 0-6.772.25-10.032 0a4.877 4.877 0 0 1-3.025-1.572A4.808 4.808 0 0 1 0 86.62v-.996l14.296 5.725z"></path><path d="M22.07 71.934c-1.755 1.742-7.774 6.148-7.9 19.365L0 85.623v-8.96a4.449 4.449 0 0 1 1.143-3.243 4.512 4.512 0 0 1 3.12-1.486c5.769-.25 11.537 0 17.807 0zM96.306 4.978v62.475H3.511V4.978a4.96 4.96 0 0 1 1.47-3.52A5.035 5.035 0 0 1 8.526 0H91.54a5.032 5.032 0 0 1 3.386 1.543 4.958 4.958 0 0 1 1.38 3.435z"></path><defs><clipPath id="clip0"><path fill="#fff" d="M0 0h157v108H0z"></path></clipPath></defs></svg>
+                </div>
+                <div class="container-flex _80-opacity mt">
+                  <div class="container-flex">
+                    <div class="old-price">$891.00</div>
+                    <div class="deco-line strike"></div>
+                  </div>
+                  <div class="old-price ml20">$207</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--<div class="top-margin-44 desktop">
+      <div class="container-flex desktop">
+       <h3 class="h3-heading m0">Average Customer Rating</h3>
+       <div class="rate">4.8</div>
+       <img src="../assets/pages/dtc/lib/img/Stars-rate.svg" loading="lazy" width="150" alt="" class="stars-desktop">
+      </div>
+     </div>-->
+
+        <div class="container-grid-3x1 mt40 mobile">
+          <div id="w-node-9311e3656712-ace7ac45" class="feature-box">
+            <svg fill="none" viewBox="0 0 128 115" loading="lazy" class="feature-icon first"><g clip-path="url(#clip0)"><path d="M50 69.51a2.001 2.001 0 0 0 2.25-3.31 33 33 0 0 0-9.43-4.44A17.4 17.4 0 0 0 51 47V24a9 9 0 0 0-9-9H25a9 9 0 0 0-9 9v23a17.36 17.36 0 0 0 8.2 14.69A33.14 33.14 0 0 0 0 94a2 2 0 0 0 4 0 29.44 29.44 0 0 1 46-24.49zM20 24a5 5 0 0 1 5-5h17a5 5 0 0 1 5 5v7H20v-7zm0 23V35h27v12a13.27 13.27 0 0 1-13.1 13.42h-.28A13.54 13.54 0 0 1 20 47z"></path><path d="M92.1 66.36A23.728 23.728 0 0 0 105 45V12A11.868 11.868 0 0 0 93.26 0H69c-7 0-13 5.5-13 12v33a23.92 23.92 0 0 0 13.64 21.37A48.07 48.07 0 0 0 33 113a2 2 0 0 0 4 0 44.002 44.002 0 0 1 24.17-39.26 42.998 42.998 0 0 0-1.28 7.48C54.35 82.34 50 87.73 50 94v15a6.59 6.59 0 0 0 6 6 2 2 0 0 0 0-4 2.922 2.922 0 0 1-2-2V94c0-4.88 3.66-9 8-9s8 4.12 8 9v15a2.922 2.922 0 0 1-2 2 2 2 0 0 0 0 4 6.587 6.587 0 0 0 6-6V94c0-6.34-4.46-11.79-10.09-12.81.24-2.6.88-6.71 2.21-9.37L79 89.37a2 2 0 0 0 3.23 0L95.08 71.8c3.11 5.36 4.38 13.57 4.81 17.22a8.83 8.83 0 1 0 4-.09 64.038 64.038 0 0 0-3.48-15.16A44.138 44.138 0 0 1 124 113a2 2 0 0 0 4 0c0-22.56-15.33-41.53-35.9-46.64zm8.9-32.14C90.13 33.77 83.11 30.5 79.27 28H101v6.22zM60 12c0-4.26 4.21-8 9-8h24a7.91 7.91 0 0 1 8 7.82V24H60V12zm0 33V28h12.89c1.52 1.6 10 9.53 28.11 10.22V45a19.79 19.79 0 0 1-19.58 20H81c-11.58 0-21-9-21-20zm20.59 39.81L70 70.39A43.88 43.88 0 0 1 81 69c3.453.002 6.892.428 10.24 1.27L80.59 84.81zm26.33 12.76a4.843 4.843 0 0 1-2.979 4.478 4.836 4.836 0 0 1-5.276-1.039 4.837 4.837 0 0 1-1.06-5.272 4.84 4.84 0 0 1 9.315 1.833z"></path><path d="M86 12h-3V9a2 2 0 1 0-4 0v3h-3a2 2 0 0 0 0 4h3v3a2 2 0 0 0 4 0v-3h3a2 2 0 0 0 0-4z"></path></g><defs><clipPath id="clip0"><path fill="#fff" d="M0 0h128v115H0z"></path></clipPath></defs></svg>
+            <div class="feature-text">Doctor<br>Approved</div>
+          </div>
+          <div id="w-node-9311e3656718-ace7ac45" class="feature-box">
+            <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 162 108" src="../assets/pages/dtc/lib/img/Truck-checkout.svg" loading="lazy" class="feature-icon smaller"><path d="M162 59.983a5.998 5.998 0 0 0-5.999-5.998h-5.639l-8.788-31.611a6 6 0 0 0-5.789-4.379H111.01V5.998A5.998 5.998 0 0 0 105.011 0H5.729A6.21 6.21 0 0 0 .03 6.688v89.285h15.297a14.995 14.995 0 0 0 14.698 12.012 14.999 14.999 0 0 0 14.697-12.012h75.586a14.995 14.995 0 0 0 24.188 8.627 14.99 14.99 0 0 0 5.206-8.627H162v-35.99zm-26.215-35.99l8.218 29.992h-8.998V23.993h.78zm-6.779 0v29.992H111.01V23.993h17.996zm-98.981 77.979a8.997 8.997 0 1 1 0-17.993 8.997 8.997 0 0 1 0 17.993zm74.986-11.997h-60.29a14.996 14.996 0 0 0-24.187-8.627 14.996 14.996 0 0 0-5.207 8.627H6.03V6.748a1.59 1.59 0 0 1 0-.75h98.982v83.977zm29.994 11.997a8.996 8.996 0 0 1-8.313-5.555 8.998 8.998 0 1 1 8.313 5.555zm20.996-11.997h-6.299a14.996 14.996 0 0 0-29.394 0h-9.298V59.983h44.991v29.992zM15.027 53.985h77.986v5.998H15.027v-5.998zm0-11.997h77.986v5.999H15.027v-5.999z"></path></svg>
+            <div class="feature-text">Free Shipping<br>&amp; Handling*</div>
+          </div>
+          <div id="w-node-9311e365671e-ace7ac45" class="feature-box">
+            <svg fill="none" viewBox="0 0 113 115" loading="lazy" class="feature-icon"><path d="M56.487 23.537a34.118 34.118 0 0 0-18.911 5.727A33.972 33.972 0 0 0 25.04 44.5a33.86 33.86 0 0 0-1.935 19.613 33.92 33.92 0 0 0 9.318 17.38 34.079 34.079 0 0 0 17.43 9.29 34.14 34.14 0 0 0 19.67-1.928 34.028 34.028 0 0 0 15.281-12.499A33.881 33.881 0 0 0 90.55 57.5a33.927 33.927 0 0 0-9.98-24.012 34.124 34.124 0 0 0-24.082-9.951zm0 62.138a28.327 28.327 0 0 1-15.707-4.751A28.206 28.206 0 0 1 30.37 68.27a28.112 28.112 0 0 1-1.607-16.288 28.163 28.163 0 0 1 7.74-14.432 28.295 28.295 0 0 1 14.478-7.712 28.345 28.345 0 0 1 16.334 1.61A28.252 28.252 0 0 1 80 41.836 28.13 28.13 0 0 1 84.757 57.5a28.172 28.172 0 0 1-8.292 19.916 28.337 28.337 0 0 1-19.978 8.259z"></path><path d="M111.142 62.151l-2.051-2.824a3.828 3.828 0 0 1 0-4.472l2.012-2.85a9.577 9.577 0 0 0-.201-11.437 9.615 9.615 0 0 0-3.105-2.618l-3.075-1.648a3.824 3.824 0 0 1-1.974-4l.59-3.437a9.581 9.581 0 0 0-2.01-7.616 9.626 9.626 0 0 0-7.05-3.552l-3.499-.14a3.851 3.851 0 0 1-2.2-.819 3.833 3.833 0 0 1-1.311-1.941l-1.05-3.297a9.634 9.634 0 0 0-3.476-4.988 9.68 9.68 0 0 0-5.777-1.925 9.507 9.507 0 0 0-3.844.78l-3.166 1.38a3.855 3.855 0 0 1-4.357-.959l-2.345-2.555A9.61 9.61 0 0 0 56.022.039a9.634 9.634 0 0 0-7.185 3.296L46.58 5.929a3.846 3.846 0 0 1-4.37 1.035l-3.229-1.278a9.815 9.815 0 0 0-3.665-.728 9.654 9.654 0 0 0-5.834 1.972 9.608 9.608 0 0 0-3.444 5.094l-.922 3.31a3.833 3.833 0 0 1-1.293 1.956 3.852 3.852 0 0 1-2.193.842l-3.473.217a9.607 9.607 0 0 0-7.01 3.641 9.547 9.547 0 0 0-1.883 7.654l.64 3.412a3.823 3.823 0 0 1-1.921 4l-3.038 1.75a9.68 9.68 0 0 0-3.04 2.66A9.647 9.647 0 0 0 .217 45.13a9.53 9.53 0 0 0 1.64 7.667l2.05 2.81a3.826 3.826 0 0 1 0 4.46l-1.986 2.9A9.582 9.582 0 0 0 .38 70.745a9.584 9.584 0 0 0 1.744 3.663 9.616 9.616 0 0 0 3.105 2.617l3.063 1.649a3.824 3.824 0 0 1 1.96 3.948l-.589 3.437a9.556 9.556 0 0 0 2 7.63 9.607 9.607 0 0 0 7.06 3.55l3.499.141a3.85 3.85 0 0 1 2.196.814 3.833 3.833 0 0 1 1.315 1.934l.987 3.373a9.648 9.648 0 0 0 3.476 4.986 9.7 9.7 0 0 0 5.776 1.927 9.514 9.514 0 0 0 3.844-.78l3.204-1.354a3.853 3.853 0 0 1 4.37.958l2.332 2.556a9.64 9.64 0 0 0 7.196 3.157 9.63 9.63 0 0 0 7.156-3.247l2.281-2.632a3.852 3.852 0 0 1 4.37-1.035l3.23 1.278a9.82 9.82 0 0 0 3.665.728 9.65 9.65 0 0 0 5.83-1.967 9.61 9.61 0 0 0 3.447-5.086l.949-3.322a3.832 3.832 0 0 1 1.297-1.96 3.851 3.851 0 0 1 2.201-.839l3.486-.217a9.62 9.62 0 0 0 7.056-3.618 9.55 9.55 0 0 0 1.914-7.678l-.641-3.411a3.834 3.834 0 0 1 1.846-4l3.049-1.699a9.604 9.604 0 0 0 4.725-6.333 9.57 9.57 0 0 0-1.636-7.723v-.038zm-4.011 6.466a3.829 3.829 0 0 1-1.884 2.555l-3.05 1.661a9.621 9.621 0 0 0-4.034 4.29 9.584 9.584 0 0 0-.771 5.83l.64 3.412a3.696 3.696 0 0 1-.743 3.08 3.766 3.766 0 0 1-2.806 1.456l-3.499.192a9.615 9.615 0 0 0-5.503 2.115 9.57 9.57 0 0 0-3.224 4.925l-.922 3.335a3.824 3.824 0 0 1-1.99 2.421 3.852 3.852 0 0 1-3.136.135l-3.23-1.278a9.862 9.862 0 0 0-3.664-.728 9.669 9.669 0 0 0-7.266 3.296l-2.294 2.556a3.846 3.846 0 0 1-5.754 0l-2.332-2.556a9.693 9.693 0 0 0-7.176-3.194 9.495 9.495 0 0 0-3.845.779l-3.204 1.355a3.691 3.691 0 0 1-1.512.307 3.853 3.853 0 0 1-2.296-.766 3.833 3.833 0 0 1-1.382-1.982l-.973-3.347a9.607 9.607 0 0 0-3.301-4.871 9.653 9.653 0 0 0-5.529-2.042l-3.485-.14a3.852 3.852 0 0 1-2.784-1.421 3.828 3.828 0 0 1-.804-3.014l.59-3.437a9.533 9.533 0 0 0-.852-5.821 9.57 9.57 0 0 0-4.108-4.222l-3.063-1.649a3.84 3.84 0 0 1-1.935-2.555 3.67 3.67 0 0 1 .615-3.08l2-2.849a9.539 9.539 0 0 0-.09-11.193l-2.05-2.799a3.713 3.713 0 0 1-.642-3.092 3.828 3.828 0 0 1 1.884-2.555l3.05-1.56a9.595 9.595 0 0 0 4.032-4.29 9.558 9.558 0 0 0 .76-5.83l-.614-3.385a3.708 3.708 0 0 1 .756-3.067 3.843 3.843 0 0 1 2.806-1.457l3.473-.204a9.665 9.665 0 0 0 5.528-2.13 9.619 9.619 0 0 0 3.237-4.95l.923-3.36a3.83 3.83 0 0 1 1.99-2.42 3.854 3.854 0 0 1 3.136-.135l3.242 1.278a9.75 9.75 0 0 0 3.652.728 9.673 9.673 0 0 0 7.266-3.297l2.294-2.555a3.844 3.844 0 0 1 2.877-1.29 3.854 3.854 0 0 1 2.877 1.29l2.332 2.555a9.661 9.661 0 0 0 7.176 3.13 9.428 9.428 0 0 0 3.845-.779l3.203-1.367c.479-.2.993-.305 1.512-.307a3.852 3.852 0 0 1 2.296.799 3.833 3.833 0 0 1 1.356 2.013l.962 3.335a9.622 9.622 0 0 0 3.3 4.876 9.666 9.666 0 0 0 5.529 2.05l3.486.14a3.853 3.853 0 0 1 2.832 1.405 3.715 3.715 0 0 1 .807 3.041l-.59 3.438a9.546 9.546 0 0 0 .854 5.82 9.58 9.58 0 0 0 4.106 4.223l3.062 1.648a3.831 3.831 0 0 1 1.282 5.571l-1.999 2.85a9.553 9.553 0 0 0 .09 11.206l2.05 2.798a4.091 4.091 0 0 1 .628 3.08z"></path><path d="M64.868 48.147L52.22 60.682l-4.114-4.115a2.9 2.9 0 0 0-4.04.047 2.884 2.884 0 0 0-.06 4.03l6.163 6.158a2.845 2.845 0 0 0 3.144.634c.35-.147.666-.363.931-.634l14.699-14.566a2.87 2.87 0 0 0 0-4.064 2.913 2.913 0 0 0-4.075-.025z"></path></svg>
+            <div class="feature-text">Money Back<br>Guarantee</div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <section id="cards-section" class="section mt50 desktop hidden-section">
+    <div class="centered-container up30 w-container">
+      <div class="text-center">
+        <img src="../assets/pages/dtc/img/guarantee-block.webp" alt="guarantee" style="max-width: 930px;">
+      </div>
+      <div class="top-margin-60 mt44">
+        <div class="description-desktop">
+          <p class="paragraph-big fixed">Still not sure? Remember, Alpha Bites comes with a 100% Money-Back Guarantee for a full 180 days! That means if you don't get the results we promise or you change your mind for any reason at all, just call or email our support team within the next 6 months and quickly get every penny back. What do you have to lose? Your success is virtually guaranteed!</p>
+        </div>
+        <div class="description-tablet">
+          <p class="paragraph-big fixed">Still not sure? Remember, Alpha Bites comes with a 100% Money-Back Guarantee for a full 180 days! That means if you don't get the results we promise or you change your mind for any reason at all, just call or email our support team within the next 6 months and quickly get every penny back. What do you have to lose? Your success is virtually guaranteed!</p>
+        </div>
+        <div class="top-margin-custom">
+          <h3 class="h3-heading accent">Limited Time Offer</h3>
+          <div class="top-margin-10">
+            <a href="#hero-overlay" data-w-id="e915efaa-a9fe-7d62-9b26-2f9f03f6607d" class="button accent jumbopulse w-button"><span class="upper-text">Yes!</span> I Want Alpha Bites</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cards-section" class="section gray hidden-section">
+    <div class="centered-container w-container">
+      <div class="container-flex">
+        <div class="w-layout-grid grid">
+          <div id="w-node-ef91167b8782-ace7ac45" class="fda-logo logo"><img src="../assets/pages/dtc/lib/img/FDA-2.svg" loading="lazy" alt=""></div>
+          <div class="logo smaller"><img src="../assets/pages/dtc/lib/img/GMP-2.svg" loading="lazy" alt=""></div>
+          <div class="logo smaller"><img src="../assets/pages/dtc/lib/img/NSF-1.svg" loading="lazy" alt=""></div>
+        </div>
+      </div>
+      <div class="top-margin-44">
+        <div class="section-footer">
+          <div class="footer-nav-wrap">
+            <a href="../privacy-policy" target="_blank" class="footer-nav-link">Privacy</a>
+            <a href="../terms-of-service" target="_blank" class="footer-nav-link">Terms &amp; Conditions</a>
+            <a href="../disclaimer" target="_blank" class="footer-nav-link">Disclaimer</a>
+            <a href="../refund-policy" target="_blank" class="footer-nav-link">Returns &amp; Refunds</a>
+            <a href="../contact-us" target="_blank" class="footer-nav-link">Contact</a>
+          </div>
+        </div>
+        <div class="container-flex align-left dark">
+          <img src="../assets/pages/dtc/lib/img/BuyGoods-2.svg" loading="lazy" alt="" class="logo-jumbo">
+          <p class="paragrpaph-tiny">BuyGoods is the retailer of this product. BuyGoods is a registered trademark of BuyGoods Inc., a Delaware corporation located at 1201 N Orange Street Suite #7223, Wilmington, DE, 19801, USA and used by permission. BuyGoods role as retailer does not constitute an endorsement, approval or review of this product or any claim, statement or opinion used in promotion of this product.</p>
+        </div>
+      </div>
+      <div class="container-flex align-left">
+        <p class="paragrpaph-tiny" style="text-align:center">
+          The website's content and the product for sale is based upon the author's opinion and is provided solely on an "AS IS" and "AS AVAILABLE" basis. You should do your own research and confirm the information with other sources when searching for information regarding health issues and always review the information carefully with your professional health care provider before using any of the protocols presented on this website and/or in the product sold here. Neither ClickBank nor the author are engaged in rendering medical or similar professional services or advice via this website or in the product, and the information provided is not intended to replace medical advice offered by a physician or other licensed healthcare provider. You should not construe ClickBank's sale of this product as an endorsement by ClickBank of the views expressed herein, or any warranty or guarantee of any strategy, recommendation, treatment, action, or application of advice made by the author of the product.
+          <br><br>
+          Statements on this website have not been evaluated by the Food and Drug Administration. Products are not intended to diagnose, treat, cure or prevent any disease. If you are pregnant, nursing, taking medication, or have a medical condition, consult your physician before using our products.
+          <br><br>
+          Testimonials, case studies, and examples found on this page are results that have been forwarded to us by users of Alpha Bites products and related products are not intended to represent or guarantee that anyone will achieve the same or similar results.
+          <br><br>&nbsp;Copyright © 2024 b6bm4bSooxVo.com. &nbsp;All Rights Reserved.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Redirection Blocks -->
+<div id="affiliate-redirect" style="display: none;">
+  <a href="https://buygoods.com/secure/checkout.html?account_id=9236&amp;product_codename=alp2DTC&amp;redirect=aHR0cHM6Ly9nZXRhbHBoYWJpdGVzLmNvbS91cHNlbGwtZHRj&amp;vid1=dtc" id="link-2btl">LINK A</a>
+  <a href="https://buygoods.com/secure/checkout.html?account_id=9236&amp;product_codename=alp3DTC&amp;redirect=aHR0cHM6Ly9nZXRhbHBoYWJpdGVzLmNvbS91cHNlbGwtZHRj&amp;vid1=dtc" id="link-3btl">LINK B</a>
+  <a href="https://buygoods.com/secure/checkout.html?account_id=9236&amp;product_codename=alp6DTC&amp;redirect=aHR0cHM6Ly9nZXRhbHBoYWJpdGVzLmNvbS91cHNlbGwtZHRj&amp;vid1=dtc" id="link-6btl">LINK C</a>
+</div>
+<div id="spinner" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #231f20; align-items: center; justify-content: center; flex-flow: column; z-index: 9999;">
+  <img src="../assets/main/img/logo.png" alt="logo" style="max-width: 300px;">
+  <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill:white;"><style>.spinner_EUy1{animation:spinner_grm3 1.2s infinite}.spinner_f6oS{animation-delay:.1s}.spinner_g3nX{animation-delay:.2s}.spinner_nvEs{animation-delay:.3s}.spinner_MaNM{animation-delay:.4s}.spinner_4nle{animation-delay:.5s}.spinner_ZETM{animation-delay:.6s}.spinner_HXuO{animation-delay:.7s}.spinner_YaQo{animation-delay:.8s}.spinner_GOx1{animation-delay:.9s}.spinner_4vv9{animation-delay:1s}.spinner_NTs9{animation-delay:1.1s}.spinner_auJJ{transform-origin:center;animation:spinner_T3O6 6s linear infinite}@keyframes spinner_grm3{0%,50%{animation-timing-function:cubic-bezier(.27,.42,.37,.99);r:1px}25%{animation-timing-function:cubic-bezier(.53,0,.61,.73);r:2px}}@keyframes spinner_T3O6{0%{transform:rotate(360deg)}100%{transform:rotate(0deg)}}</style><g class="spinner_auJJ"><circle class="spinner_EUy1" cx="12" cy="3" r="1"></circle><circle class="spinner_EUy1 spinner_f6oS" cx="16.50" cy="4.21" r="1"></circle><circle class="spinner_EUy1 spinner_NTs9" cx="7.50" cy="4.21" r="1"></circle><circle class="spinner_EUy1 spinner_g3nX" cx="19.79" cy="7.50" r="1"></circle><circle class="spinner_EUy1 spinner_4vv9" cx="4.21" cy="7.50" r="1"></circle><circle class="spinner_EUy1 spinner_nvEs" cx="21.00" cy="12.00" r="1"></circle><circle class="spinner_EUy1 spinner_GOx1" cx="3.00" cy="12.00" r="1"></circle><circle class="spinner_EUy1 spinner_MaNM" cx="19.79" cy="16.50" r="1"></circle><circle class="spinner_EUy1 spinner_YaQo" cx="4.21" cy="16.50" r="1"></circle><circle class="spinner_EUy1 spinner_4nle" cx="16.50" cy="19.79" r="1"></circle><circle class="spinner_EUy1 spinner_HXuO" cx="7.50" cy="19.79" r="1"></circle><circle class="spinner_EUy1 spinner_ZETM" cx="12" cy="21" r="1"></circle></g></svg>
+</div>
+<!-- END Redirection Blocks -->
+
+<script type="text/javascript">
+  //const queryString = window.location.search;
+  //const urlParams = new URLSearchParams(queryString);
+  const btlQtyUrl = urlParams.get('btl_qty');
+
+  if (urlParams.has('btl_qty')) {
+    document.querySelector("#spinner").style.display = "flex";
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+      if (urlParams.has('btl_qty')) {
+        switch(btlQtyUrl) {
+          case '2btl':
+            document.querySelector("#link-2btl").click();
+            break;
+          case '3btl':
+            document.querySelector("#link-3btl").click();
+            break;
+          case '6btl':
+            document.querySelector("#link-6btl").click();
+        }
+      }
+    }, 500);
+  }, false );
+</script>  
+
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  async
+  defer
+></script>
+
+
+</body></html>
